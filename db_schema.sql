@@ -64,12 +64,13 @@ CREATE TABLE Categoria (
 CREATE TABLE Vehiculos (
     VehiculoID nchar(5),
     MarcaID nchar(5),
-    Categoria nchar(5),
+    CategoriaID nchar(5),
     ModeloID nchar(5),
     Color nvarchar(15),
     Kilometraje float,
     Combustible nvarchar(10),
-    CONSTRAINT VehiculoPK PRIMARY KEY (VehiculoID)
+    CONSTRAINT VehiculoPK PRIMARY KEY (VehiculoID),
+    CONSTRAINT CategoriaFK FOREIGN KEY (CategoriaID) REFERENCES Categoria(CategoriaID)
 );
 
 CREATE TABLE Daños (
