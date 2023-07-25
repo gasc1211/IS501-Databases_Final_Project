@@ -123,12 +123,14 @@ CREATE TABLE Ordenes (
 
 CREATE TABLE Facturas (
     OrdenID nchar(5),
+    FacturaID nchar(15),
     DatosPagoID nchar(5),
     Subtotal money,
     Descuento money,
     Impuesto_Venta money,
     Impuesto_Turismo money,
     Total money,
+    CONSTRAINT FacturaPK PRIMARY KEY (FacturaID),
     CONSTRAINT OrdenFK FOREIGN KEY (OrdenID) REFERENCES Ordenes(OrdenID),
     CONSTRAINT DatosPagoFK FOREIGN KEY (DatosPagoID) REFERENCES DatosPago(DatosPagoID)
 );
