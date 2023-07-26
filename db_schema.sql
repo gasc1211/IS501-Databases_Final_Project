@@ -24,9 +24,9 @@ CREATE TABLE DatosPago (
     Direccion nvarchar(100),
     Num_Tarjeta nchar(16) UNIQUE,
     CSC nchar(5),
-    Efectivo boolean,
+    Efectivo bit,
     CONSTRAINT DatosPagoPK PRIMARY KEY (DatosPagoID),
-    CONSTRAINT ClienteFK PRIMARY KEY (ClienteID) REFERENCES Cliente(ClienteID)
+    CONSTRAINT DatosPagoClienteFK FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
 
 );
 
@@ -46,11 +46,11 @@ CREATE TABLE Empleado (
     Sueldo money,
     Direccion nvarchar(50),
     CONSTRAINT EmpleadoPK PRIMARY KEY (EmpleadoID),
-    CONSTRAINT PuestoFK FOREIGN KEY (PuestoID) REFERENCES Puestos(PuestoID)
+    CONSTRAINT EmpleadoPuestoFK FOREIGN KEY (PuestoID) REFERENCES Puestos(PuestoID)
 );
 
 CREATE TABLE Marcas (
-    MarcaID ncahr(5),
+    MarcaID nchar(5),
     Nombre nchar(25),
     CONSTRAINT MarcaPK PRIMARY KEY (MarcaID)
 );
@@ -70,7 +70,8 @@ CREATE TABLE Vehiculos (
     Kilometraje float,
     Combustible nvarchar(10),
     CONSTRAINT VehiculoPK PRIMARY KEY (VehiculoID),
-    CONSTRAINT CategoriaFK FOREIGN KEY (CategoriaID) REFERENCES Categoria(CategoriaID)
+    CONSTRAINT VehiculoCategoriaFK FOREIGN KEY (CategoriaID) REFERENCES Categoria(CategoriaID),
+	CONSTRAINT VehiculosMarcaFK FOREIGN KEY (MarcaID) REFERENCES Marcas(MarcaID),
 );
 
 CREATE TABLE Daños (
@@ -87,7 +88,7 @@ CREATE TABLE Extras (
     Costo money,
     CategoriaID nchar(5),
     CONSTRAINT ExtraPK PRIMARY KEY (ExtraID),
-    CONSTRAINT CategoriaFK FOREIGN KEY (CategoriaID) REFERENCES Categoria(CategoriaID)
+    CONSTRAINT ExtrasCategoriaFK FOREIGN KEY (CategoriaID) REFERENCES Categoria(CategoriaID)
 );
 
 CREATE TABLE Caracteristicas (
@@ -117,9 +118,10 @@ CREATE TABLE Ordenes (
     EstatusID nchar(5),
     CONSTRAINT OrdenPK PRIMARY KEY (OrdenID),
     CONSTRAINT EmpleadoFK FOREIGN KEY (EmpleadoID) REFERENCES Empleado(EmpleadoID),
-    CONSTRAINT ClienteFK FOREIGN KEY (ClienteID) REFERENCES Cliente(ClienteID),
-    CONSTRAINT VehiculoFK FOREIGN KEY (VehiculoID) REFERENCES Vehiculo(VehiculoID),
-    CONSTRAINT EstatusFK FOREIGN KEY (EstatusID) REFERENCES Estatus(EstatusID)
+    CONSTRAINT OrdenesClienteFK FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID),
+    CONSTRAINT OrdenesVehiculoFK FOREIGN KEY (VehiculoID) REFERENCES Vehiculos(VehiculoID),
+    CONSTRAINT OrdenesEstatusFK FOREIGN KEY (EstatusID) REFERENCES Estatus(EstatusID),
+	CONSTRAINT OrdenesLocalidadEntrega FOREIGN KEY (Localidad_DevolucionID) REFERENCES Localidades(LocalidadID)
 );
 
 CREATE TABLE Facturas (
@@ -132,8 +134,8 @@ CREATE TABLE Facturas (
     Impuesto_Turismo money,
     Total money,
     CONSTRAINT FacturaPK PRIMARY KEY (FacturaID),
-    CONSTRAINT OrdenFK FOREIGN KEY (OrdenID) REFERENCES Ordenes(OrdenID),
-    CONSTRAINT DatosPagoFK FOREIGN KEY (DatosPagoID) REFERENCES DatosPago(DatosPagoID)
+    CONSTRAINT FacturasOrdenFK FOREIGN KEY (OrdenID) REFERENCES Ordenes(OrdenID),
+    CONSTRAINT FacturasDatosPagoFK FOREIGN KEY (DatosPagoID) REFERENCES DatosPago(DatosPagoID)
 );
 
 CREATE TABLE Reporte (
@@ -143,27 +145,27 @@ CREATE TABLE Reporte (
     Kilometraje_Final int,
     ReceptorID nchar(5),
     CONSTRAINT ReportePK PRIMARY KEY (ReporteID),
-    CONSTRAINT OrdenFK FOREIGN KEY (OrdenID) REFERENCES Ordenes(OrdenID),
-    CONSTRAINT ReceptorFK FOREIGN KEY (ReceptorID) REFERENCES Empleado(EmpleadoID)
+    CONSTRAINT ReporteOrdenFK FOREIGN KEY (OrdenID) REFERENCES Ordenes(OrdenID),
+    CONSTRAINT ReporteReceptorFK FOREIGN KEY (ReceptorID) REFERENCES Empleado(EmpleadoID)
 );
 
 CREATE TABLE DañosXReporte (
     ReporteID nchar(5),
     DañoID nchar(5),
-    CONSTRAINT ReporteFK FOREIGN KEY (ReporteID) REFERENCES Reportes(ReporteID),
-    CONSTRAINT DañoFK FOREIGN KEY (DañoID) REFERENCES Daños(DañoID)
+    CONSTRAINT DRReporteFK FOREIGN KEY (ReporteID) REFERENCES Reporte(ReporteID),
+    CONSTRAINT DRDañoFK FOREIGN KEY (DañoID) REFERENCES Daños(DañoID)
 );
 
 CREATE TABLE CaracteristicasXVehiculo (
     VehiculoID nchar(5),
     CaracteristicaID nchar(5),
-    CONSTRAINT VehiculoFK FOREIGN KEY (VehiculoID) REFERENCES Vehiculo(VehiculoID),
-    CONSTRAINT CaracteristicaFK FOREIGN KEY (CaracteristicaID) REFERENCES Caracteristicas(CaracteristicaID)
+    CONSTRAINT CVVehiculoFK FOREIGN KEY (VehiculoID) REFERENCES Vehiculos(VehiculoID),
+    CONSTRAINT CVCaracteristicaFK FOREIGN KEY (CaracteristicaID) REFERENCES Caracteristicas(CaracteristicaID)
 );
 
 CREATE TABLE ExtrasXOrden (
     OrdenID nchar(5),
     ExtraID nchar(5),
-    CONSTRAINT OrdenFK FOREIGN KEY (OrdenID) REFERENCES Ordenes(OrdenID),
-    CONSTRAINT ExtraFK FOREIGN KEY (ExtraID) REFERENCES Extras(ExtraID)
+    CONSTRAINT EOOrdenFK FOREIGN KEY (OrdenID) REFERENCES Ordenes(OrdenID),
+    CONSTRAINT EOExtraFK FOREIGN KEY (ExtraID) REFERENCES Extras(ExtraID)
 );
