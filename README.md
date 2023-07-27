@@ -9,7 +9,7 @@
 
 1. Clone the repository
 ``` bash
-git clone https://github.com/gasc1211/IS501- Databases_Final_Project
+git clone https://github.com/gasc1211/IS501-Databases_Final_Project
 ``` 
 2. Install the package with npm
 ``` bash
