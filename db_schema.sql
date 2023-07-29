@@ -1,27 +1,27 @@
 CREATE TABLE Localidades (
     LocalidadID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
-    Direccion varchar(100),
-    Telefono char(8),
+    Direccion VARCHAR(100),
+    Telefono CHAR(8),
     CONSTRAINT LocalidadPK PRIMARY KEY(LocalidadID)
 );
 
 CREATE TABLE Clientes (
     ClienteID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
-    Nombres varchar(30),
-    Apellidos varchar(30),
-    DNI char(13),
-    RTN char(13),
-    Licencia char(13),
-    Celular char(8),
+    Nombres VARCHAR(30),
+    Apellidos VARCHAR(30),
+    DNI CHAR(13),
+    RTN CHAR(13),
+    Licencia CHAR(13),
+    Celular CHAR(8),
     CONSTRAINT ClientePK PRIMARY KEY (ClienteID)
 );
 
 CREATE TABLE DatosPago (
     DatosPagoID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     ClienteID INTEGER,
-    Direccion varchar(100),
-    Num_Tarjeta char(16) UNIQUE,
-    CSC char(5),
+    Direccion VARCHAR(100),
+    Num_Tarjeta CHAR(16) UNIQUE,
+    CSC CHAR(5),
     Efectivo NUMBER(1) CHECK (Efectivo IN (0, 1)),
     CONSTRAINT DatosPagoPK PRIMARY KEY (DatosPagoID),
     CONSTRAINT DatosPagoClienteFK FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
@@ -29,32 +29,33 @@ CREATE TABLE DatosPago (
 
 CREATE TABLE Puestos (
     PuestoID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
-    Nombre varchar(50),
+    Nombre VARCHAR(50),
     CONSTRAINT PuestoPK PRIMARY KEY (PuestoID)
 );
 
 CREATE TABLE Empleado (
     EmpleadoID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
-    Nombres varchar(30),
-    Apellidos varchar(30),
-    DNI char(13) UNIQUE,
-    Celular char(8),
+    Nombres VARCHAR(30),
+    Apellidos VARCHAR(30),
+    DNI CHAR(13) UNIQUE,
+    Celular CHAR(8),
     PuestoID INTEGER,
-    Sueldo INTEGER,
-    Direccion varchar(50),
+    Sueldo NUMBER,
+    Direccion VARCHAR(50),
     CONSTRAINT EmpleadoPK PRIMARY KEY (EmpleadoID),
     CONSTRAINT EmpleadoPuestoFK FOREIGN KEY (PuestoID) REFERENCES Puestos(PuestoID)
 );
 
 CREATE TABLE Marcas (
     MarcaID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
-    Nombre char(25),
+    Nombre CHAR(25),
     CONSTRAINT MarcaPK PRIMARY KEY (MarcaID)
 );
 
 CREATE TABLE Categoria (
     CategoriaID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
-    Nombre char(25),
+    Nombre CHAR(25),
+    Tasa_Seguro NUMBER,
     CONSTRAINT CategoriaPK PRIMARY KEY (CategoriaID)
 );
 
@@ -62,10 +63,10 @@ CREATE TABLE Vehiculos (
     VehiculoID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     MarcaID INTEGER,
     CategoriaID INTEGER,
-    ModeloID char(5),
-    Color varchar(15),
+    ModeloID CHAR(5),
+    Color VARCHAR(15),
     Kilometraje NUMBER,
-    Combustible varchar(10),
+    Combustible VARCHAR(10),
     CONSTRAINT VehiculoPK PRIMARY KEY (VehiculoID),
     CONSTRAINT VehiculoCategoriaFK FOREIGN KEY (CategoriaID) REFERENCES Categoria(CategoriaID),
 	CONSTRAINT VehiculosMarcaFK FOREIGN KEY (MarcaID) REFERENCES Marcas(MarcaID)
@@ -73,15 +74,15 @@ CREATE TABLE Vehiculos (
 
 CREATE TABLE Danios (
     DanioID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
-    Descripcion varchar(100),
+    Descripcion VARCHAR(100),
     Costo INTEGER,
     CONSTRAINT DanioPK PRIMARY KEY (DanioID)
 );
 
 CREATE TABLE Extras (
     ExtraID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
-    Nombre varchar(50),
-    Descripcion varchar(100),
+    Nombre VARCHAR(50),
+    Descripcion VARCHAR(100),
     Costo INTEGER,
     CategoriaID INTEGER,
     CONSTRAINT ExtraPK PRIMARY KEY (ExtraID),
@@ -90,15 +91,15 @@ CREATE TABLE Extras (
 
 CREATE TABLE Caracteristicas (
     CaracteristicaID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
-    Nombre varchar(50),
-    Descripcion varchar(100),
+    Nombre VARCHAR(50),
+    Descripcion VARCHAR(100),
     CONSTRAINT CaracteristicaPK PRIMARY KEY (CaracteristicaID)
 );
 
 CREATE TABLE Estatus (
     EstatusID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
-    Nombre varchar(50),
-    Descripcion varchar(100),
+    Nombre VARCHAR(50),
+    Descripcion VARCHAR(100),
     CONSTRAINT EstatusPK PRIMARY KEY (EstatusID)
 );
 
