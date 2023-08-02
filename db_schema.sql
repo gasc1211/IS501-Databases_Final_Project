@@ -13,7 +13,14 @@ CREATE TABLE Clientes (
     RTN CHAR(13),
     Licencia CHAR(13),
     Celular CHAR(8),
+    CorreoElectronico VARCHAR(35),
     CONSTRAINT ClientePK PRIMARY KEY (ClienteID)
+);
+
+CREATE TABLE ListaNegra (
+    ClienteID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
+    Motivo VARCHAR(100),
+    CONSTRAINT ClienteBaneadoFK FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
 );
 
 CREATE TABLE DatosPago (
@@ -22,7 +29,6 @@ CREATE TABLE DatosPago (
     Direccion VARCHAR(100),
     Num_Tarjeta CHAR(16) UNIQUE,
     CSC CHAR(5),
-    Efectivo NUMBER(1) CHECK (Efectivo IN (0, 1)),
     CONSTRAINT DatosPagoPK PRIMARY KEY (DatosPagoID),
     CONSTRAINT DatosPagoClienteFK FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
 );
@@ -75,6 +81,7 @@ CREATE TABLE Vehiculos (
     Combustible VARCHAR(10),
     Automatico NUMBER(1) CHECK (Automatico IN (0, 1)),
     EstadoVehiculoID INTEGER,
+    IntervaloMantenimiento NUMBER,
     CONSTRAINT VehiculoPK PRIMARY KEY (VehiculoID),
     CONSTRAINT VehiculoCategoriaFK FOREIGN KEY (CategoriaID) REFERENCES Categoria(CategoriaID),
 	CONSTRAINT VehiculosMarcaFK FOREIGN KEY (MarcaID) REFERENCES Marcas(MarcaID),
