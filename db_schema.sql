@@ -55,8 +55,14 @@ CREATE TABLE Marcas (
 CREATE TABLE Categoria (
     CategoriaID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     Nombre CHAR(25),
-    Tasa_Seguro NUMBER,
     CONSTRAINT CategoriaPK PRIMARY KEY (CategoriaID)
+);
+
+CREATE TABLE Estado_Vehiculo (
+    EstadoVehiculoID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
+    Nombre VARCHAR(50),
+    Descripcion VARCHAR(100),
+    CONSTRAINT EstadoVehiculoPK PRIMARY KEY (EstadoVehiculoID)
 );
 
 CREATE TABLE Vehiculos (
@@ -67,9 +73,12 @@ CREATE TABLE Vehiculos (
     Color VARCHAR(15),
     Kilometraje NUMBER,
     Combustible VARCHAR(10),
+    Automatico NUMBER(1) CHECK (Automatico IN (0, 1)),
+    EstadoVehiculoID INTEGER,
     CONSTRAINT VehiculoPK PRIMARY KEY (VehiculoID),
     CONSTRAINT VehiculoCategoriaFK FOREIGN KEY (CategoriaID) REFERENCES Categoria(CategoriaID),
-	CONSTRAINT VehiculosMarcaFK FOREIGN KEY (MarcaID) REFERENCES Marcas(MarcaID)
+	CONSTRAINT VehiculosMarcaFK FOREIGN KEY (MarcaID) REFERENCES Marcas(MarcaID),
+    CONSTRAINT EstadoVehiculoFK FOREIGN KEY (EstadoVehiculoID) REFERENCES Estado_Vehiculo(EstadoVehiculoID)
 );
 
 CREATE TABLE Danios (
@@ -103,6 +112,14 @@ CREATE TABLE Estatus (
     CONSTRAINT EstatusPK PRIMARY KEY (EstatusID)
 );
 
+CREATE TABLE Seguro (
+    SeguroID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
+    Nombre VARCHAR(50),
+    Descripcion VARCHAR(100),
+    Costo INTEGER,
+    CONSTRAINT SeguroPK PRIMARY KEY (SeguroID)
+);
+
 CREATE TABLE Ordenes (
     OrdenID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     Fecha_Hora DATE,
@@ -113,14 +130,15 @@ CREATE TABLE Ordenes (
     Fecha_Hora_Entrega DATE,
     Localidad_DevolucionID INTEGER,
     Fecha_Hora_Devolucion DATE,
-    EstatusID INTEGER,
+    SeguroID INTEGER,
     CONSTRAINT OrdenPK PRIMARY KEY (OrdenID),
     CONSTRAINT EmpleadoFK FOREIGN KEY (EmpleadoID) REFERENCES Empleado(EmpleadoID),
     CONSTRAINT OrdenesClienteFK FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID),
     CONSTRAINT OrdenesVehiculoFK FOREIGN KEY (VehiculoID) REFERENCES Vehiculos(VehiculoID),
     CONSTRAINT OrdenesEstatusFK FOREIGN KEY (EstatusID) REFERENCES Estatus(EstatusID),
 	CONSTRAINT OrdenesLocalidadEntrega FOREIGN KEY (Localidad_EntregaID) REFERENCES Localidades(LocalidadID),
-    CONSTRAINT OrdenesLocalidadDevolucion FOREIGN KEY (Localidad_DevolucionID) REFERENCES Localidades(LocalidadID)
+    CONSTRAINT OrdenesLocalidadDevolucion FOREIGN KEY (Localidad_DevolucionID) REFERENCES Localidades(LocalidadID),
+    CONSTRAINT SeguroFK FOREIGN KEY (SeguroID) REFERENCES Seguro(SeguroID)
 );
 
 CREATE TABLE Facturas (
@@ -137,12 +155,25 @@ CREATE TABLE Facturas (
     CONSTRAINT FacturasDatosPagoFK FOREIGN KEY (DatosPagoID) REFERENCES DatosPago(DatosPagoID)
 );
 
-CREATE TABLE Reporte (
-    ReporteID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
+CREATE TABLE Reporte_Recepcion (
+    ReporteSalidaID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
+    OrdenID INTEGER,
+    Fecha_Hora_Entrega DATE,
+    Kilometraje_Inicial NUMBER,
+    ReceptorID INTEGER,
+    Observaciones VARCHAR(150),
+    CONSTRAINT ReportePK PRIMARY KEY (ReporteID),
+    CONSTRAINT ReporteOrdenFK FOREIGN KEY (OrdenID) REFERENCES Ordenes(OrdenID),
+    CONSTRAINT ReporteReceptorFK FOREIGN KEY (ReceptorID) REFERENCES Empleado(EmpleadoID)
+);
+
+CREATE TABLE Reporte_Entrega (
+    ReporteEntregaID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     OrdenID INTEGER,
     Fecha_Hora_Recepcion DATE,
     Kilometraje_Final NUMBER,
     ReceptorID INTEGER,
+    Observaciones VARCHAR(150),
     CONSTRAINT ReportePK PRIMARY KEY (ReporteID),
     CONSTRAINT ReporteOrdenFK FOREIGN KEY (OrdenID) REFERENCES Ordenes(OrdenID),
     CONSTRAINT ReporteReceptorFK FOREIGN KEY (ReceptorID) REFERENCES Empleado(EmpleadoID)
@@ -151,7 +182,7 @@ CREATE TABLE Reporte (
 CREATE TABLE DañosXReporte (
     ReporteID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     DanioID INTEGER,
-    CONSTRAINT DRReporteFK FOREIGN KEY (ReporteID) REFERENCES Reporte(ReporteID),
+    CONSTRAINT DRReporteFK FOREIGN KEY (ReporteID) REFERENCES Reporte_Entrega(ReporteEntregaID),
     CONSTRAINT DRDañoFK FOREIGN KEY (DanioID) REFERENCES Danios(DanioID)
 );
 
