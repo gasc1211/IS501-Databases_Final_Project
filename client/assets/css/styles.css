@@ -1,1 +1,20 @@
+#homeLink{
+    color: white;
+}
+
+#reserveBlock{
+    height : 35vh;
+    width : 50vw;
+    margin-top: 5vw;
+    margin-left: 25vw;
+    background-color : #31362F !important;
+}
+ 
+#lugarRecogida{
+    width: 275px;
+}
+
+#lugarEntrega{
+    width: 275px;
+}
 
