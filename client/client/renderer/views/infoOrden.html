@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Extras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/infoOrden.css">
+</head>
+<body>
+    <div class="container-fluid navbar-styles">
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <h1>Resumen de Órden</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row p-3 mt-5 mb-5 cliente-info-stles">
+            <div class="col-12">
+                <h2>Órden</h2>
+            </div>
+            <div class="col-4"><p><b>OrdenID:</b> 234</p></div>
+            <div class="col-4"><p><b>Fecha de Entrega:</b> 08/08/2023</p></div>
+            <div class="col-4"><p><b>Fecha de Debolución:</b> 10/08/2023</p></div>
+            <div class="col-4"><p><b>Fecha de Emisión:</b> 03/08/2023</p></div>
+            <div class="col-4"><p><b>Lugar de Entrega:</b>Tegucigalpa</p></div>
+            <div class="col-4"><p><b>Lugar de Devolucón:</b> Comayagua</p></div>
+        </div>
+        <div class="row p-3 mt-5 mb-5 cliente-info-stles">
+            <div class="col-4 p-3 seccion-styles">
+                <div class="row">
+                    <h2>Datos Personales</h2>
+                </div>
+                <div class="row">
+                    <div class="col-6"><p><b>Nombre:</b> Junior</p></div>
+                    <div class="col-6"><p><b>Apellido:</b> Castillo</p></div>
+                    <div class="col-6"><p><b>Email:</b> jicastilloh@unah.hn</p></div>
+                    <div class="col-6"><p><b>Teléfono:</b> XXXX-XXXX</p></div>
+                    <div class="col-6"><p><b>No. Identidad:</b> XXXX-XXXX-XXXXX</p></div>
+                    <div class="col-6"><p><b>Licencia </b>de Conducir: XXXXX</p></div>
+                </div>
+            </div>
+            <div class="col-4 p-3 seccion-styles">
+                <div class="row">
+                    <h2>Vehículo</h2>
+                </div>
+                <div class="row">
+                    <div class="col-6"><p><b>Matrícula:</b> XXXXXXXX</p></div>
+                    <div class="col-6"><p><b>Marca:</b> Kia</p></div>
+                    <div class="col-6"><p><b>Modelo:</b> Picanto</p></div>
+                    <div class="col-6"><p><b>Categoría:</b> Económico</p></div>
+                </div>
+            </div>
+            <div class="col-4 p-3">
+                <div class="row">
+                    <h2>Extras</h2>
+                </div>
+                <table class="table-styles">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                    </tr>
+                    <tr>
+                        <td>Silla para bebé</td>
+                        <td>$5</td>
+                    </tr>
+                    <tr>
+                        <td>Silla para bebé</td>
+                        <td>$5</td>
+                    </tr>
+                    <tr>
+                        <td>Silla para bebé</td>
+                        <td>$5</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row p-3 mt-5 mb-5">
+            <button class="btn btn-lg btn-nueva-orden" data-bs-toggle="modal" data-bs-target="#createFactModal">Finalizar Órden</button>
+        </div>
+    </div>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="createFactModal" tabindex="-1" aria-labelledby="createFactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="createFactModalLabel">Factura</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <h4><b>Subtotal: </b>$500</h4>
+            <h4><b>Impuesto: </b>5%</h4>
+            <h4><b>Descuento: </b>$0</h4>
+            <h2><b>Total: </b>$525</h2>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+        </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+</body>
+</html>

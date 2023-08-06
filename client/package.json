@@ -1,24 +1,35 @@
 {
   "name": "client",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.ts",
+  "description": "ProyectoBD",
+  "main": "./src/main.js",
   "scripts": {
     "build": "tsc",
-    "start": "npm run build && electron ./dist/main.js"
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gasc1211/IS501-Databases_Final_Project.git"
   },
-  "author": "",
+  "author": "GrupoBD",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/gasc1211/IS501-Databases_Final_Project/issues"
   },
   "homepage": "https://github.com/gasc1211/IS501-Databases_Final_Project#readme",
   "devDependencies": {
+    "@electron-forge/cli": "^6.2.1",
+    "@electron-forge/maker-deb": "^6.2.1",
+    "@electron-forge/maker-rpm": "^6.2.1",
+    "@electron-forge/maker-squirrel": "^6.2.1",
+    "@electron-forge/maker-zip": "^6.2.1",
+    "@electron-forge/plugin-auto-unpack-natives": "^6.2.1",
     "electron": "^25.3.1",
     "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
   }
 }
