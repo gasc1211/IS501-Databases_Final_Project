@@ -1,11 +1,10 @@
 {
-  "name": "client",
+  "name": "gearshift-frontend",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "build": "tsc",
-    "start": "npm run build && electron ./dist/main.js"
+    "dev": "tsc && electron ./dist/main.js"
   },
   "repository": {
     "type": "git",
