@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <!-- <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    /> -->
+    <title>Hello from Electron renderer!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/reserva.css">
+  </head>
+  <body>
+
+    <div class="container-fluid navbar-styles">
+      <div class="row">
+          <div class="col d-flex justify-content-center">
+              <h1>Reservaciones</h1>
+          </div>
+      </div>
+    </div>
+    <div class="container-fluid mb-5">
+      <div class="row form-styles">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <form class="p-2">
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center">
+                <h2>Reserva tu vehículo</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="lugarRecogidaInput" class="form-label">Lugar de Recogida</label>
+                  <select class="form-control" name="lugarRecogidaInput" id="">
+                    <option value="Tegucigalpa">Tegucigalpa</option>
+                    <option value="Comayaguela">Comayaguela</option>
+                    <option value="Choluteca">Choluteca</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="lugarEntregaInput" class="form-label">Lugar de Entrega</label>
+                  <select class="form-control" name="lugarEntregaInput" id="">
+                    <option value="Tegucigalpa">Tegucigalpa</option>
+                    <option value="Comayaguela">Comayaguela</option>
+                    <option value="Choluteca">Choluteca</option>
+                  </select>
+                </div>   
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="mb-3">
+                  <label for="fechaAlquilerInput" class="form-label">Fecha de alquiler</label>
+                  <input type="date" class="form-control" id="fechaAlquilerInput" placeholder="Seleccione la fecha">
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="mb-3">
+                  <label for="horaRecogidaInput" class="form-label">Hora de Recogida</label>
+                  <input type="time" min="07:00" max="17:00" value="12:00" class="form-control" id="horaRecogidaInput" placeholder="Seleccione la hora">
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="mb-3">
+                  <label for="horaEntregaInput" class="form-label">Hora de Entrega</label>
+                  <input type="time" min="07:00" max="17:00" value="12:00" class="form-control" id="horaEntregaInput" placeholder="Seleccione la hora">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+
+    <p id="info"></p>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+    <script src="../renderer/renderer.js"></script>
+  </body>
+</html>

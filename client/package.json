@@ -1,20 +1,23 @@
 {
   "name": "client",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.ts",
+  "description": "ProyectoBD",
+  "main": "./src/main.js",
   "scripts": {
     "build": "tsc",
     "start": "electron-forge start",
     "package": "electron-forge package",
+// clientView
+    "make": "electron-forge make"
     "make": "electron-forge make",
     "initial": "electron ."
+// main
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gasc1211/IS501-Databases_Final_Project.git"
   },
-  "author": "",
+  "author": "GrupoBD",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/gasc1211/IS501-Databases_Final_Project/issues"
