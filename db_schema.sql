@@ -149,8 +149,9 @@ CREATE TABLE Ordenes (
 );
 
 CREATE TABLE Facturas (
-    OrdenID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
-    FacturaID INTEGER,
+    FacturaID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
+    OrdenID INTEGER,
+    ReporteFinalID INTEGER,    
     DatosPagoID INTEGER,
     Subtotal NUMBER,
     Descuento NUMBER,
@@ -159,6 +160,7 @@ CREATE TABLE Facturas (
     Total NUMBER,
     CONSTRAINT FacturaPK PRIMARY KEY (FacturaID),
     CONSTRAINT FacturasOrdenFK FOREIGN KEY (OrdenID) REFERENCES Ordenes(OrdenID),
+    CONSTRAINT FacturasReporteFinalFK FOREIGN KEY (OrdenID) REFERENCES Ordenes(OrdenID),
     CONSTRAINT FacturasDatosPagoFK FOREIGN KEY (DatosPagoID) REFERENCES DatosPago(DatosPagoID)
 );
 
@@ -186,8 +188,8 @@ CREATE TABLE Reporte_Entrega (
     CONSTRAINT ReporteReceptorFK FOREIGN KEY (ReceptorID) REFERENCES Empleado(EmpleadoID)
 );
 
-CREATE TABLE DañosXReporte (
-    ReporteID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
+CREATE TABLE DañosXReporte_Entrega (
+    ReporteEntregaID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     DanioID INTEGER,
     CONSTRAINT DRReporteFK FOREIGN KEY (ReporteID) REFERENCES Reporte_Entrega(ReporteEntregaID),
     CONSTRAINT DRDañoFK FOREIGN KEY (DanioID) REFERENCES Danios(DanioID)
