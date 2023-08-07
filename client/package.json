@@ -7,7 +7,11 @@
     "build": "tsc",
     "start": "electron-forge start",
     "package": "electron-forge package",
+// clientView
     "make": "electron-forge make"
+    "make": "electron-forge make",
+    "initial": "electron ."
+// main
   },
   "repository": {
     "type": "git",
