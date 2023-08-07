@@ -72,17 +72,31 @@ CREATE TABLE Estado_Vehiculo (
     CONSTRAINT EstadoVehiculoPK PRIMARY KEY (EstadoVehiculoID)
 );
 
+CREATE TABLE Modelo(
+    ModeloID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
+    nombreModelo VarChar(15),
+    descripcion varChar(150)
+)
+
+CREATE TABLE Color(
+    colorID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
+    nombre_color VARCHAR(12),
+    CONSTRAINT colorPK PRIMARY KEY (colorID)
+)
+
+
 CREATE TABLE Vehiculos (
     VehiculoID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     MarcaID INTEGER,
     CategoriaID INTEGER,
-    ModeloID CHAR(5),
-    Color VARCHAR(15),
+    ModeloID INTEGER,
+    ColorID INTEGER,
     Kilometraje NUMBER,
     Combustible VARCHAR(10),
     Automatico NUMBER(1) CHECK (Automatico IN (0, 1)),
     EstadoVehiculoID INTEGER,
     IntervaloMantenimiento NUMBER,
+    ObservacionesVehiculo VARCHAR(200),
     CONSTRAINT VehiculoPK PRIMARY KEY (VehiculoID),
     CONSTRAINT VehiculoCategoriaFK FOREIGN KEY (CategoriaID) REFERENCES Categoria(CategoriaID),
 	CONSTRAINT VehiculosMarcaFK FOREIGN KEY (MarcaID) REFERENCES Marcas(MarcaID),
