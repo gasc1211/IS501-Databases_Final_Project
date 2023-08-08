@@ -1,0 +1,62 @@
+.navbar-styles{
+    background-color: #70D2ED;
+    color: aliceblue;
+}
+
+.cliente-info-stles{
+    border: 1px solid #41889E;
+    border-radius: 5px;
+    background-color: aliceblue;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.cliente-info-stles:hover{
+    box-shadow: 0px 0px 8px gray;
+}
+
+ /* Estilo para la tabla */
+ .table-styles {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Estilo para el encabezado de la tabla */
+.table-styles tr th {
+    background-color: #70D2ED;
+    border: 1px solid #41889E;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Estilo para las celdas de la tabla */
+.table-styles tr td {
+    border: 1px solid #41889E;
+    padding: 8px;
+}
+
+/* Estilo para las filas alternas*/
+.table-styles tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.btn-styles{
+    background-color: #9F341E;
+    color: white;
+}
+
+.btn-styles:hover{
+    background-color: transparent;
+    color: #9F341E;
+    border: 1px solid #9F341E;
+}
+
+.btn-nueva-orden{
+    background-color: #9F341E;
+    color: white;
+}
+
+.btn-nueva-orden:hover{
+    background-color: transparent;
+    color: #9F341E;
+    border: 1px solid #9F341E;
+}
