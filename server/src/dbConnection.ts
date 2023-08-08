@@ -6,7 +6,11 @@ const dbConfig = require("./dbConfig");
 async function initConnection() {
   try {
     // Attempt a connection to the database
-    await oracledb.createPool(dbConfig);
+    await oracledb.createPool({
+      user: "system",
+      password: "ProyectoBD1",
+      connectionString: "localhost/xe"
+    });
   } catch (error) {
     console.error(error);
   } finally {
@@ -15,11 +19,56 @@ async function initConnection() {
   }
 }
 
+async function getUsers() {
+  let connection;
+  try {
+    // Establish a connection to the database server
+    connection = await oracledb.getConnection({
+      user: "system",
+      password: "ProyectoBD1",
+      connectionString: "localhost/xe"
+    });
+
+    // SQL statement to execute
+    const sqlStatement: string = `
+    SELECT emp.empID, emp.nombre_emp, pu.desc_puesto
+    FROM Empleado emp 
+    JOIN Puesto pu ON pu.puestoID = emp.puestoID
+    `;
+
+    // Statement execution options
+    const options: Object = {
+      outFormat: oracledb.OUT_FORMAT_OBJECT, // Use OUT_FORMAT_OBJECT for JSON-like results
+    };
+
+    // Execute the SELECT statement
+    const result = await connection.execute(sqlStatement, [], options);
+
+    return result.rows; // Return the retrieved rows
+  } catch (error) {
+    console.log(error);
+    throw error;
+  } finally {
+    // Dispose of the connection
+    if (connection) {
+      try {
+        await connection.close();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+}
+
 async function createUser(client: types.Clientes) {
   let connection;
   try {
     // Establish a connection pool to the database sever
-    connection = await oracledb.getConnection(dbConfig);
+    connection = await oracledb.getConnection({
+      user: "system",
+      password: "ProyectoBD1",
+      connectionString: "localhost/xe"
+    });
 
     // SQL statement to execute
     const sqlStatement: string = `INSERT INTO Clientes(Nombres, Apellidos, DNI, RTN, Licencia, Celular, CorreoElectronico) VALUES(:1, :2, :3, :4, :5, :6, :7)`;
@@ -65,3 +114,5 @@ async function closeConnectionPool() {
 }
 
 initConnection();
+
+export {getUsers}
