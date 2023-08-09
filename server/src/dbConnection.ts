@@ -60,6 +60,42 @@ async function getUsers() {
   }
 }
 
+
+async function logIn(key1: String, key2: String) {
+  let connection
+  try {
+    connection = await oracledb.getConnection({
+      user: "system",
+      password: "ProyectoBD1",
+      connectionString: "localhost/xe"
+    });
+
+    const sqlStatement: string = `
+    SELECT * FROM Clientes
+    WHERE NOMBREUSUARIO = '${key1}'
+    AND CONTRASENIA = '${key2}'
+    `;
+
+    const options: Object = {
+      outFormat: oracledb.OUT_FORMAT_OBJECT,
+    };
+
+    const result = await connection.execute(sqlStatement, [], options);
+    return result.rows;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }finally {
+    if (connection) {
+      try {
+        await connection.close();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+};
+
 async function createUser(client: types.Clientes) {
   let connection;
   try {
@@ -115,4 +151,4 @@ async function closeConnectionPool() {
 
 initConnection();
 
-export {getUsers}
+export {getUsers, logIn}
