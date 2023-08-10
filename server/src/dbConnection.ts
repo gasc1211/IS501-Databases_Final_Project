@@ -1,16 +1,17 @@
 import oracledb from "oracledb";
 import * as types from "./types";
+import dotenv from "dotenv";
 
-const dbConfig = require("./dbConfig");
+dotenv.config();
+
+const config = require("./config");
+
+const dbConfig = config.default;
 
 async function initConnection() {
   try {
     // Attempt a connection to the database
-    await oracledb.createPool({
-      user: "system",
-      password: "ProyectoBD1",
-      connectionString: "localhost/xe"
-    });
+    await oracledb.createPool(dbConfig);
   } catch (error) {
     console.error(error);
   } finally {
@@ -23,11 +24,7 @@ async function getUsers() {
   let connection;
   try {
     // Establish a connection to the database server
-    connection = await oracledb.getConnection({
-      user: "system",
-      password: "ProyectoBD1",
-      connectionString: "localhost/xe"
-    });
+    connection = await oracledb.getConnection(dbConfig);
 
     // SQL statement to execute
     const sqlStatement: string = `
@@ -60,20 +57,15 @@ async function getUsers() {
   }
 }
 
-
-async function logIn(key1: String, key2: String) {
-  let connection
+async function logIn(username: String, password: String) {
+  let connection;
   try {
-    connection = await oracledb.getConnection({
-      user: "system",
-      password: "ProyectoBD1",
-      connectionString: "localhost/xe"
-    });
+    connection = await oracledb.getConnection(dbConfig);
 
     const sqlStatement: string = `
     SELECT * FROM Clientes
-    WHERE NOMBREUSUARIO = '${key1}'
-    AND CONTRASENIA = '${key2}'
+    WHERE NOMBREUSUARIO = '${username}'
+    AND CONTRASENIA = '${password}'
     `;
 
     const options: Object = {
@@ -85,7 +77,7 @@ async function logIn(key1: String, key2: String) {
   } catch (error) {
     console.log(error);
     throw error;
-  }finally {
+  } finally {
     if (connection) {
       try {
         await connection.close();
@@ -94,17 +86,13 @@ async function logIn(key1: String, key2: String) {
       }
     }
   }
-};
+}
 
-async function createUser(client: types.Clientes) {
+export async function createUser(client: types.Clientes) {
   let connection;
   try {
     // Establish a connection pool to the database sever
-    connection = await oracledb.getConnection({
-      user: "system",
-      password: "ProyectoBD1",
-      connectionString: "localhost/xe"
-    });
+    connection = await oracledb.getConnection(dbConfig);
 
     // SQL statement to execute
     const sqlStatement: string = `INSERT INTO Clientes(Nombres, Apellidos, DNI, RTN, Licencia, Celular, CorreoElectronico) VALUES(:1, :2, :3, :4, :5, :6, :7)`;
@@ -151,4 +139,4 @@ async function closeConnectionPool() {
 
 initConnection();
 
-export {getUsers, logIn}
+export { getUsers, logIn };
