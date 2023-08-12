@@ -77,9 +77,9 @@ INSERT INTO Clientes (Nombres, apellidos, DNI, Licencia, celular, correoElectron
 
 SELECT * FROM Clientes;
 ------------------------------------------------------------
+INSERT INTO ListaNegra_Clientes (ClienteID, Motivo) VALUES (4, 'No paga a tiempo');
 
---No Hay en lista negra aun
-
+select * from listanegra_clientes;
 ------------------------------------------------------------
 INSERT INTO Tipo_Tarjeta (Nombre) VALUES ('Visa');
 INSERT INTO Tipo_Tarjeta (Nombre) VALUES ('MasterCard');
