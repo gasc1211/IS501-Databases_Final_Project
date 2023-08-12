@@ -158,5 +158,30 @@ VALUES (3, 1, 5, 1, 1, 1, '01/07/2023', '02/07/2023');
 
 select * from ordenes;
 ------------------------------------------------------------
+------------------------------------------------------------
+INSERT INTO Reporte_Inicial (OrdenID, Fecha_Entrega, Kilometraje_Inicial, ReceptorID, Observaciones)
+VALUES (3, '01/08/2023', 300, 2, 'Nada que reportar joaquin');
+INSERT INTO Reporte_Inicial (OrdenID, Fecha_Entrega, Kilometraje_Inicial, ReceptorID, Observaciones)
+VALUES (4, '05/08/2023', 400, 2, 'Nada que reportar joaquin');
 
+select * from Reporte_Inicial;
+------------------------------------------------------------
+INSERT INTO Reporte_Final (OrdenID, Fecha_Recepcion, Kilometraje_Final, ReceptorID, Observaciones)
+VALUES (3, '04/08/2023', 400, 2, 'Nada que reportar joaquin');
+INSERT INTO Reporte_Final (OrdenID, Fecha_Recepcion, Kilometraje_Final, ReceptorID, Observaciones)
+VALUES (4, '10/08/2023', 500, 2, 'Mas KM k nunca');
+
+select * from Reporte_Final;
+------------------------------------------------------------
+INSERT INTO Facturas (OrdenID, ReporteInicialID, Descripcion, Subtotal, Descuento, Impuesto_Venta, Total) 
+VALUES (3, 1, 'Factura por reporte inicial', 1500, 100, 900, 2300);
+INSERT INTO Facturas (OrdenID, ReporteInicialID, Descripcion, Subtotal, Descuento, Impuesto_Venta, Total) 
+VALUES (4, 2, 'Factura por reporte inicial', 1500, 100, 900, 2300);
+
+INSERT INTO Facturas (OrdenID, ReporteFinalID, Descripcion, Subtotal, Descuento, Impuesto_Venta, Total) 
+VALUES (3, 1, 'Factura por reporte final', 1500, 100, 900, 2300);
+INSERT INTO Facturas (OrdenID, ReporteFinalID, Descripcion, Subtotal, Descuento, Impuesto_Venta, Total) 
+VALUES (4, 2, 'Factura por reporte final', 1500, 100, 900, 2300);
+
+select * from Facturas;
 ------------------------------------------------------------
