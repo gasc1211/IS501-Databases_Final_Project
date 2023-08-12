@@ -77,9 +77,11 @@ CREATE TABLE Clientes (
 );
 ------------------------------------------------------------
 CREATE TABLE ListaNegra_Clientes (
-    ClienteID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
+    ListaNegraID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
+    ClienteID INTEGER,
     Motivo VARCHAR(100),
-    CONSTRAINT ClienteBaneadoFK FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
+    CONSTRAINT ListaNegraPK PRIMARY KEY (ListaNegraID),
+    CONSTRAINT ListaNegraIDClienteBaneadoFK FOREIGN KEY (ClienteID) REFERENCES Clientes(ClienteID)
 );
 ------------------------------------------------------------
 CREATE TABLE Tipo_Tarjeta (
