@@ -9,7 +9,7 @@ CREATE TABLE Clientes (
     ClienteID INTEGER GENERATED ALWAYS AS IDENTITY NOT NULL,
     Nombres VARCHAR(30),
     Apellidos VARCHAR(30),
-    DNI CHAR(13),
+    DNI CHAR(13) UNIQUE,
     RTN CHAR(13),
     Licencia CHAR(13),
     Celular CHAR(8),
