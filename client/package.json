@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "gearshift-frontend",
   "version": "1.0.0",
   "description": "ProyectoBD",
   "main": "./src/main.js",
@@ -7,11 +7,8 @@
     "build": "tsc",
     "start": "electron-forge start",
     "package": "electron-forge package",
-// clientView
-    "make": "electron-forge make"
     "make": "electron-forge make",
     "initial": "electron ."
-// main
   },
   "repository": {
     "type": "git",
@@ -30,8 +27,7 @@
     "@electron-forge/maker-squirrel": "^6.2.1",
     "@electron-forge/maker-zip": "^6.2.1",
     "@electron-forge/plugin-auto-unpack-natives": "^6.2.1",
-    "electron": "^25.3.1",
-    "typescript": "^5.1.6"
+    "electron": "^25.3.1"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0"
