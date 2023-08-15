@@ -83,26 +83,26 @@ Electron applications need to be packaged to be distributed to users. In this tu
 In order for your application to be trusted by the user's system, you need to digitally certify that the distributable is authentic and untampered by code signing it. Your app can be signed through Forge once you configure it to use your code signing certificate information.
 */
 
-const { app, BrowserWindow, ipcMain } = require('electron')
-const path = require('path')
+const { app, BrowserWindow, ipcMain } = require("electron");
+const path = require("path");
 
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 1000,
     height: 800,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-    }
-  })
+      preload: path.join(__dirname, "preload.js"),
+    },
+  });
 
-  win.loadFile('../client/src/landingPage/index.html')
-}
+  win.loadFile("../client/client/src/landingPage/index.html");
+};
 
 app.whenReady().then(() => {
-  ipcMain.handle('ping', () => 'pong')
-  createWindow()
-})
+  ipcMain.handle("ping", () => "pong");
+  createWindow();
+});
 
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') app.quit()
-})
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") app.quit();
+});
