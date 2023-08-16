@@ -1,30 +1,110 @@
-import oracledb, { Connection } from "oracledb";
+import oracledb from "oracledb";
 import * as types from "./types";
 
-const config = require("./config");
+const dbConfig = require("./dbConfig");
 
-// Attempt to create the connection pool
-async function initConnection(): Promise<Connection | undefined> {
+async function initConnection() {
   try {
-    // Get connection properties from config file
-    const { user, password, connectionString } = config.default;
-
-    // Create the connection pool
+    // Attempt a connection to the database
     await oracledb.createPool({
-      user: user,
-      password: password,
-      connectionString: connectionString,
-      poolAlias: "MainPool",
+      user: "system",
+      password: "ProyectoBD1",
+      connectionString: "localhost/xe"
     });
-
-    // Return the connection
-    return await oracledb.getConnection("MainPool");
   } catch (error) {
     console.error(error);
+  } finally {
+    // Close the connection
+    await closeConnectionPool();
   }
 }
 
-// Close the connection pool
+async function getUsers() {
+  let connection;
+  try {
+    // Establish a connection to the database server
+    connection = await oracledb.getConnection({
+      user: "system",
+      password: "ProyectoBD1",
+      connectionString: "localhost/xe"
+    });
+
+    // SQL statement to execute
+    const sqlStatement: string = `
+    SELECT emp.empID, emp.nombre_emp, pu.desc_puesto
+    FROM Empleado emp 
+    JOIN Puesto pu ON pu.puestoID = emp.puestoID
+    `;
+
+    // Statement execution options
+    const options: Object = {
+      outFormat: oracledb.OUT_FORMAT_OBJECT, // Use OUT_FORMAT_OBJECT for JSON-like results
+    };
+
+    // Execute the SELECT statement
+    const result = await connection.execute(sqlStatement, [], options);
+
+    return result.rows; // Return the retrieved rows
+  } catch (error) {
+    console.log(error);
+    throw error;
+  } finally {
+    // Dispose of the connection
+    if (connection) {
+      try {
+        await connection.close();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+}
+
+async function createUser(client: types.Clientes) {
+  let connection;
+  try {
+    // Establish a connection pool to the database sever
+    connection = await oracledb.getConnection({
+      user: "system",
+      password: "ProyectoBD1",
+      connectionString: "localhost/xe"
+    });
+
+    // SQL statement to execute
+    const sqlStatement: string = `INSERT INTO Clientes(Nombres, Apellidos, DNI, RTN, Licencia, Celular, CorreoElectronico) VALUES(:1, :2, :3, :4, :5, :6, :7)`;
+
+    // Values for insert statement
+    let params: Array<any> = [
+      client.nombres,
+      client.apellidos,
+      client.dni,
+      client.rtn,
+      client.licencia,
+      client.celular,
+      client.correoElectronico,
+    ];
+
+    // Statement execution options
+    const options: Object = {
+      out: oracledb.OUT_FORMAT_OBJECT,
+    };
+
+    // Execute the statement
+    await connection.execute(sqlStatement, params, options);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    // Dispose of the connection
+    if (connection) {
+      try {
+        await connection.close();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+}
+
 async function closeConnectionPool() {
   try {
     await oracledb.getPool().close(10);
@@ -33,6 +113,4 @@ async function closeConnectionPool() {
   }
 }
 
-const connection: Promise<Connection | undefined> = initConnection();
-
-export { connection };
+initConnection();
