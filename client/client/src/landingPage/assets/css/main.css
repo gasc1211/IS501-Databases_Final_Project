@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic");
-@import url("fontawesome-all.min.css");
+/* @import url("fontawesome-all.min.css"); */
 
 /*
 	Astral by HTML5 UP
@@ -1470,6 +1470,7 @@ input, select, textarea {
 	form select,
 	form textarea {
 		-webkit-appearance: none;
+		appearance: none;
 		border: 0;
 		background: #f4f4f4;
 		padding: 0.75em;
@@ -1587,6 +1588,7 @@ input, select, textarea {
 		-ms-transition: background-color .25s ease-in-out;
 		transition: background-color .25s ease-in-out;
 		-webkit-appearance: none;
+		appearance: none;
 		display: inline-block;
 		background-color: #222222;
 		color: #ffffff;
