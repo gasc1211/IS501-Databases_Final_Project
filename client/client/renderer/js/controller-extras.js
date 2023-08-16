@@ -1,3 +1,10 @@
+const regresar = document.getElementById("regresar")
+regresar.addEventListener("click", function(){
+    window.location.href = "./selectAuto.html"
+})
+
+let nombresExtras = []
+
 document.addEventListener("DOMContentLoaded", async function() {
     // Definimos la url
     const apiUrl = `http://localhost:3000/getExtras`;
@@ -45,16 +52,19 @@ document.addEventListener("DOMContentLoaded", async function() {
 
                     contadorExtras += 1;
                     sessionStorage.setItem(`extraID${contadorExtras}`, extra.EXTRAID);
+                    nombresExtras.push(extra.NOMBRE)
 
                     
                 });
             }
         });
 
+        
+
         document.getElementById("finalizarExtras").addEventListener("click", function(){
 
             sessionStorage.setItem("contadorExtras", contadorExtras)
-
+            sessionStorage.setItem('nombresExtras', JSON.stringify(nombresExtras))
             window.location.href = `../views/infoOrden.html`;
 
         })
@@ -63,4 +73,5 @@ document.addEventListener("DOMContentLoaded", async function() {
         console.error('Error:', error);
     }
 
+    console.log(nombresExtras)
 });

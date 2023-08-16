@@ -53,3 +53,25 @@
     color: #9F341E;
     border: 1px solid #9F341E;
 }
+
+.btn-ver-perfil{
+    background-color: #51a015;
+    color: white;
+}
+
+.btn-ver-perfil:hover{
+    background-color: transparent;
+    color: #51a015;
+    border: 1px solid #51a015;
+}
+
+.btn-cerrar-sesion{
+    background-color: #41889E;
+    color: white;
+}
+
+.btn-cerrar-sesion:hover{
+    background-color: transparent;
+    color: #41889E;
+    border: 1px solid #41889E;
+}

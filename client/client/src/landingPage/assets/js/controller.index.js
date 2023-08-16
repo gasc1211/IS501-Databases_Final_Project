@@ -114,33 +114,3 @@ document.getElementById("crearUser").addEventListener("click", async function(){
         }
 
 });
-
-// document.getElementById("crearUser").addEventListener("click", async function(){
-
-//     // Definimos la url
-//     const apiUrl = `http://localhost:3000/crearUsuario`;
-//     const passNuevoUser = document.getElementById("passNuevoUser").value;
-//     const userNuevoUser = document.getElementById("userNuevoUser").value;
-
-//     // Definimos las opciones de la peticion
-//     const requestOptions = {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({passNuevoUser, userNuevoUser})
-//     };
-
-//     try {
-//         const response = await fetch(apiUrl, requestOptions);
-//         if (response.ok) {
-//             alert('User created successfully!');
-//           } else {
-//             alert('Error creating user');
-//           }
-
-//     } catch (error) {
-//         console.error('Error:', error);
-//     }
-
-// });

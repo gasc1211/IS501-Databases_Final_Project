@@ -10,6 +10,9 @@
 <body>
     <div class="container-fluid navbar-styles">
         <div class="row">
+            <div class="col-1 d-flex align-items-center">
+                <button id="regresar" class="btn btn-danger">Regresar</button>
+              </div>
             <div class="col d-flex justify-content-center">
                 <h1>Resumen de Órden</h1>
             </div>
@@ -21,28 +24,8 @@
         </div>
         <div class="row p-3 mt-5 mb-5 cliente-info-stles">
             <div id="datosPersonales" class="col-4 p-3 seccion-styles">
-                <!-- <div class="row">
-                    <h2>Datos Personales</h2>
-                </div>
-                <div class="row">
-                    <div class="col-6"><p><b>Nombre:</b> Junior</p></div>
-                    <div class="col-6"><p><b>Apellido:</b> Castillo</p></div>
-                    <div class="col-6"><p><b>Email:</b> jicastilloh@unah.hn</p></div>
-                    <div class="col-6"><p><b>Teléfono:</b> XXXX-XXXX</p></div>
-                    <div class="col-6"><p><b>No. Identidad:</b> XXXX-XXXX-XXXXX</p></div>
-                    <div class="col-6"><p><b>Licencia </b>de Conducir: XXXXX</p></div>
-                </div> -->
             </div>
             <div id="datosAutoResumen" class="col-4 p-3 seccion-styles">
-                <!-- <div class="row">
-                    <h2>Vehículo</h2>
-                </div>
-                <div class="row">
-                    <div class="col-6"><p><b>Matrícula:</b> XXXXXXXX</p></div>
-                    <div class="col-6"><p><b>Marca:</b> Kia</p></div>
-                    <div class="col-6"><p><b>Modelo:</b> Picanto</p></div>
-                    <div class="col-6"><p><b>Categoría:</b> Económico</p></div>
-                </div> -->
             </div>
             <div class="col-4 p-3">
                 <div class="row">
@@ -56,25 +39,20 @@
                         </tr>
                     </thead>
                     <tbody id="tablaExtras">
-                        <!-- <tr>
-                            <td>Silla para bebé</td>
-                            <td>$5</td>
-                        </tr>
-                        <tr>
-                            <td>Silla para bebé</td>
-                            <td>$5</td>
-                        </tr>
-                        <tr>
-                            <td>Silla para bebé</td>
-                            <td>$5</td>
-                        </tr> -->
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="row p-3 mt-5 mb-5">
-            <button id="finalizarOrden" class="btn btn-lg btn-nueva-orden">Finalizar Órden</button>
-            <!-- <button id="finalizarOrden" class="btn btn-lg btn-nueva-orden" data-bs-toggle="modal" data-bs-target="#createFactModal">Finalizar Órden</button> -->
+            <div class="col d-flex align-items-center justify-content-center">
+                <button id="finalizarOrden" class="btn btn-lg btn-nueva-orden" data-bs-toggle="modal" data-bs-target="#createFactModal">Finalizar Órden</button>
+            </div>
+            <div class="col d-flex align-items-center justify-content-center">
+                <button id="verPerfil" class="btn btn-lg btn-ver-perfil">Ver Mi Perfil</button>
+            </div>
+            <div class="col d-flex align-items-center justify-content-center">
+                <button id="cerrarSesion" class="btn btn-lg btn-cerrar-sesion">Cerrar Sesión</button>
+            </div>
         </div>
     </div>
   
@@ -87,10 +65,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <h4><b>Subtotal: </b>$500</h4>
-            <h4><b>Impuesto: </b>5%</h4>
-            <h4><b>Descuento: </b>$0</h4>
-            <h2><b>Total: </b>$525</h2>
+            <h2><b>Su órden ha sido procesada</b></h2>
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>

@@ -4,7 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import * as types from "./types";
-import { logIn, userInfo, userOrdenActive, userAssociatedCard, userOrdenFinished, getLocalidades, getLocalidad, getSeguros, getAutos, getAuto, getExtras, getListaExtras, crearUser, getTipoTarjeta, crearTarjeta, dropTarjeta, finalizarOrden } from "./dbConnectionClient";
+import { logIn, userInfo, userOrdenActive, userAssociatedCard, userOrdenFinished, getLocalidades, getLocalidad, getSeguros, getAutos, getAuto, getExtras, getListaExtras, crearUser, getTipoTarjeta, crearTarjeta, deleteCard, finalizarOrden } from "./dbConnectionClient";
 
 dotenv.config();
 
@@ -239,7 +239,7 @@ app.post("/crearTarjeta", async (req: Request, res: Response) => {
 
 //Recupera los datos de las ordenes finalizadas de un cliente
 app.post("/finalizarOrden", async (req: Request, res: Response) => {
-  const { localidadEntrega, localidadRecogida, fechaHoraEntrega, fechaHoraRecogida, seguroID, autoID, fechaFormateada, estatusOrden, clienteID } = req.body;
+  const { localidadEntrega, localidadRecogida, fechaHoraEntrega, fechaHoraRecogida, seguroID, autoID, fechaFormateada, estatusOrden, clienteID, extrasNombres } = req.body;
 
   let datos = {
     localidadEntrega: localidadEntrega,
@@ -250,7 +250,8 @@ app.post("/finalizarOrden", async (req: Request, res: Response) => {
     autoID: autoID,
     fechaFormateada: fechaFormateada,
     estatusOrden: estatusOrden,
-    clienteID: clienteID
+    clienteID: clienteID,
+    extrasNombres: extrasNombres
   }
 
   console.log(datos)
@@ -264,10 +265,17 @@ app.post("/finalizarOrden", async (req: Request, res: Response) => {
   }
 });
 
-app.post("/dropTarjeta", async (req: Request, res: Response) => {
-  const { tarjetaID } = req.body;
+app.post("/deleteCard", async (req: Request, res: Response) => {
+  const {tarjetaID} = req.body;
+
+  let datos = {
+    tarjetaID: parseInt(tarjetaID)
+  }
+
+  console.log(tarjetaID)
+
   try {
-    const result = await dropTarjeta(parseInt(tarjetaID));
+    const result = await deleteCard(datos);
     res.json(result);
   } catch (error) {
     console.error("Error:", error);

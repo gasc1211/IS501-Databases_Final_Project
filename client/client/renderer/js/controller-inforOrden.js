@@ -1,3 +1,18 @@
+const regresar = document.getElementById("regresar")
+regresar.addEventListener("click", function(){
+    window.location.href = "./extras.html"
+})
+
+const verPerfil = document.getElementById("verPerfil")
+verPerfil.addEventListener("click", function(){
+    window.location.href = "./infoUser.html"
+})
+
+const cerrarSesion = document.getElementById("cerrarSesion")
+cerrarSesion.addEventListener("click", function(){
+    window.location.href = "../../src/landingPage/index.html"
+})
+
 // ------------------------------------------------------------------------------
 // Datos necesarios para crear Orden
 const localidadEntrega = sessionStorage.getItem("localidadEntrega");
@@ -8,6 +23,8 @@ const seguroID = sessionStorage.getItem("seguro");
 const autoID = sessionStorage.getItem("autoID")
 const estatusOrden = '1';
 let clienteID;
+let extrasEnTexto = sessionStorage.getItem('nombresExtras')
+let extrasNombres = JSON.parse(extrasEnTexto)
 
 // Obtener el día, mes y año
 let fechaActual = new Date();
@@ -36,22 +53,10 @@ const horaFormateada = `${horas}:${minutos}`;
 // let fechaFormateada = anio + '-' + mes + '-' + dia;
 let fechaFormateada = `${anio}-${mes}-${dia} ${horaFormateada}`;
 
-// console.log(localidadEntrega);
-// console.log(localidadRecogida);
-// console.log(fechaHoraEntrega);
-// console.log(fechaHoraRecogida);
-// console.log(seguroID);
-// console.log(autoID);
-// console.log(fechaFormateada);
-// console.log(estatusOrden);
-
 // ------------------------------------------------------------------------------
 
 const username = sessionStorage.getItem('username');
 document.addEventListener("DOMContentLoaded", async function() {
-    
-
-    
 
     // Definimos la url
     const apiUrlLocalEnt = `http://localhost:3000/getLocalidad/${localidadEntrega}`;
@@ -268,16 +273,6 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 document.getElementById("finalizarOrden").addEventListener("click", async function(){
 
-    console.log(localidadEntrega);
-    console.log(localidadRecogida);
-    console.log(fechaHoraEntrega);
-    console.log(fechaHoraRecogida);
-    console.log(seguroID);
-    console.log(autoID);
-    console.log(fechaFormateada);
-    console.log(estatusOrden);
-    console.log(clienteID);
-
     // Definimos la url
     const apiUrl = `http://localhost:3000/finalizarOrden`;
     
@@ -292,6 +287,7 @@ document.getElementById("finalizarOrden").addEventListener("click", async functi
     formData.append('fechaFormateada', fechaFormateada);
     formData.append('estatusOrden', estatusOrden);
     formData.append('clienteID', clienteID);
+    formData.append('extrasNombres', extrasNombres);
 
     // Definimos las opciones de la peticion
     const requestOptions = {

@@ -1,3 +1,9 @@
+const regresar = document.getElementById("regresar")
+regresar.addEventListener("click", function(){
+    window.location.href = "./infoUser.html"
+})
+
+
 document.addEventListener("DOMContentLoaded", async function() {
     // Definimos la url
     const apiUrl = `http://localhost:3000/getLocalidades`;
@@ -128,7 +134,6 @@ document.getElementById("crearReserva").addEventListener("click", async function
     sessionStorage.setItem('fechaEntrega', fechaHoraEntrega);
     sessionStorage.setItem('localidadEntrega', localidadEntrega);
     sessionStorage.setItem('localidadRecogida', localidadRecogida);
-    // sessionStorage.setItem('localidadRecogidaID', localidadRecogidaID);
     sessionStorage.setItem('seguro', seguro);
 
     window.location.href = `../views/selectAuto.html`;

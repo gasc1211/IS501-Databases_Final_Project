@@ -558,8 +558,8 @@ async function finalizarOrden(key1: any) {
     };
 
     const sqlStatement: string = `
-    INSERT INTO TARJETAS (CLIENTEID, NUM_TARJETA, CSC, FECHA_VENCIMIENTO, TIPO_TARJETAID)
-    VALUES (:clienteID, :numTarjeta, :cvv, TO_DATE(:fechaVencimiento, 'YYYY-MM-DD'), :tipoID)
+    INSERT INTO ORDENES (FECHA_HORA, ESTATUSID, VEHICULOID, LOCALIDAD_ENTREGAID, LOCALIDAD_DEVOLUCIONID, SEGUROID, FECHA_ENTREGA, FECHA_DEVOLUCION, CLIENTEID, DESCRIP_EXTRAS)
+    VALUES (TO_TIMESTAMP(:fechaFormateada, 'YYYY-MM-DD HH24:MI'), :estatusOrden, :autoID, :localidadRecogida, :localidadEntrega, :seguroID, TO_TIMESTAMP(:fechaHoraRecogida, 'YYYY-MM-DD HH24:MI'), TO_TIMESTAMP(:fechaHoraEntrega, 'YYYY-MM-DD HH24:MI'), :clienteID, :extrasNombres)
     `;
     
     const result = await connection.execute(sqlStatement, key1, { autoCommit: true });
@@ -579,21 +579,21 @@ async function finalizarOrden(key1: any) {
   }
 };
 
-async function dropTarjeta(key: number) {
+async function deleteCard(key1: any) {
   let connection;
   try {
     connection = await oracledb.getConnection(dbConfig);
 
     const sqlStatement: string = `
     DELETE FROM TARJETAS
-    WHERE TARJETAID=${key}
+    WHERE TARJETAID=:tarjetaID
     `;
 
     const options: Object = {
       outFormat: oracledb.OUT_FORMAT_OBJECT,
     };
 
-    const result = await connection.execute(sqlStatement, [], options);
+    const result = await connection.execute(sqlStatement, key1, { autoCommit: true });
     return result.rows;
   } catch (error) {
     console.log(error);
@@ -619,4 +619,4 @@ async function closeConnectionPool() {
 
 initConnection();
 
-export { logIn, userInfo, userOrdenActive, userAssociatedCard, userOrdenFinished, getLocalidades, getLocalidad, getSeguros, getAutos, getAuto, getExtras, getListaExtras, crearUser, getTipoTarjeta, crearTarjeta, dropTarjeta, finalizarOrden };
+export { logIn, userInfo, userOrdenActive, userAssociatedCard, userOrdenFinished, getLocalidades, getLocalidad, getSeguros, getAutos, getAuto, getExtras, getListaExtras, crearUser, getTipoTarjeta, crearTarjeta, deleteCard, finalizarOrden };

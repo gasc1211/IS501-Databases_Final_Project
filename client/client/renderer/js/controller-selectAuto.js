@@ -1,11 +1,9 @@
+const regresar = document.getElementById("regresar")
+regresar.addEventListener("click", function(){
+    window.location.href = "./reserva.html"
+})
+
 document.addEventListener("DOMContentLoaded", async function() {
-    // console.log(sessionStorage.getItem('seguro'));
-    // console.log(sessionStorage.getItem('localidadEntrega'));
-    // console.log(sessionStorage.getItem('fechaEntrega'))
-
-
-    // // Obtener los valores almacenados desde sessionStorage
-    
     
     // Definimos la url
     const apiUrl = `http://localhost:3000/getAutos`;

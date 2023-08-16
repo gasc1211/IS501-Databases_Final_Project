@@ -1,3 +1,8 @@
+const regresar = document.getElementById("regresar")
+regresar.addEventListener("click", function(){
+    window.location.href = "../../src/landingPage/index.html"
+})
+
 document.addEventListener("DOMContentLoaded", async function() {
     // Obtener los valores almacenados desde sessionStorage
     const username = sessionStorage.getItem('username');
@@ -180,8 +185,6 @@ document.addEventListener("DOMContentLoaded", async function() {
 document.addEventListener("DOMContentLoaded", async function() {
     // Obtener los valores almacenados desde sessionStorage
     const username = sessionStorage.getItem('username');
-
-    let tarjetaID;
     
     // Definimos la url
     const apiUrl = `http://localhost:3000/userAssociatedCard`;
@@ -208,9 +211,46 @@ document.addEventListener("DOMContentLoaded", async function() {
             <tr>
             <td>${element.NOMBRE}</td>
             <td>${element.NUM_TARJETA}</td>
-            <td><button id="${element.TARJETAID}" class="eliminarTarjeta btn btn-danger btn-styles " type="button">Quitar</button></td>
+            <td><button id="${element.TARJETAID}" class="btn btn-danger btn-styles " type="button">Quitar</button></td>
             </tr>
             `; 
+
+            const eliminarButton = document.getElementById(element.TARJETAID);
+            eliminarButton.addEventListener('click', async function() {
+
+                const apiUrlDelete = `http://localhost:3000/deleteCard`;
+
+                // Creamos otro objeto para agregar los parametros a la peticion
+                const formDataTarjeta = new URLSearchParams();
+                formDataTarjeta.append('tarjetaID', element.TARJETAID);
+
+                // Definimos las opciones de la peticion
+                const requestOptionsTarjeta = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: formDataTarjeta
+                };
+
+                try {
+                    const deleteResponse = await fetch(apiUrlDelete, requestOptionsTarjeta);
+                    // const dataRespuesta = await responseTarjeta.json();
+                    if (deleteResponse.ok) {
+                        // Eliminar la fila de la tabla después de eliminar la tarjeta en la base de datos
+                        const row = eliminarButton.closest('tr');
+                        row.remove();
+                    } else {
+                        console.error('Error al eliminar la tarjeta');
+                    }
+
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+
+
+            });
+
         });
 
 
