@@ -1,11 +1,16 @@
 import oracledb from "oracledb";
 import * as types from "./types";
 
-const dbConfig = {
+//const dbConfig = {
+  //user: "system",
+  //password: "ProyectoBD1",
+  //connectionString: "localhost/xe",
+//};
+let dbConfig = {
   user: "system",
   password: "ProyectoBD1",
   connectionString: "localhost/xe",
-};
+}
 
 async function initConnection() {
   try {
@@ -20,11 +25,15 @@ async function initConnection() {
 }
 
 // Validar si el usuario existe
-async function logIn(key1: String, key2: String) {
+async function logIn(key1: string, key2: string) {
   let connection;
   try {
-    connection = await oracledb.getConnection(dbConfig);
-
+    let userLogin = {
+      user: key1,
+      password: key2,
+      connectionString: dbConfig.connectionString,
+    }
+    connection = await oracledb.getConnection(userLogin);
     const sqlStatement: string = `
         SELECT * FROM Clientes
         WHERE USUARIO = '${key1}'
@@ -34,12 +43,11 @@ async function logIn(key1: String, key2: String) {
     const options: Object = {
       outFormat: oracledb.OUT_FORMAT_OBJECT,
     };
-
     const result = await connection.execute(sqlStatement, [], options);
     return result.rows;
   } catch (error) {
     console.log(error);
-    throw error;
+    return {status: false};
   } finally {
     if (connection) {
       try {
@@ -51,7 +59,7 @@ async function logIn(key1: String, key2: String) {
   }
 }
 
-async function userInfo(key1: String) {
+async function userInfo(key1: string) {
   let connection;
   try {
     connection = await oracledb.getConnection(dbConfig);
@@ -404,7 +412,7 @@ async function getExtras() {
     return result.rows;
   } catch (error) {
     console.log(error);
-    throw error;
+    return {status: false};
   } finally {
     if (connection) {
       try {
@@ -453,7 +461,16 @@ async function crearUser(key1: any) {
     const options: Object = {
       outFormat: oracledb.OUT_FORMAT_OBJECT,
     };
-
+    // Crear el usuario en la DB
+    const createUserStatement = `
+    ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;
+    CREATE USER :username 
+    IDENTIFIED BY :contrasena
+    PROFILE cliente;
+    GRANT CREATE SESSION TO :user
+    `
+    await connection.execute(createUserStatement, [key1.nombreNuevoUser, key1.passNuevoUser, key1.nombreNuevoUser], options)
+    // Crear el perfil del registro del usuario
     const sqlStatement: string = `
     INSERT INTO CLIENTES (NOMBRES, APELLIDOS, DNI, LICENCIA, CELULAR, CORREOELECTRONICO, DIRECCION, USUARIO, CONTRASENIA)
     VALUES (:nombreNuevoUser, :apellidoNuevoUser, :DNINuevoUser, :licenciaNuevoUser, :telNuevoUser, :emailNuevoUser, :dirNuevoUser, :userNuevoUser, :passNuevoUser)
@@ -464,6 +481,7 @@ async function crearUser(key1: any) {
     return result;
   } catch (error) {
     console.log(error);
+    return {status: false};
     throw error;
   } finally {
     if (connection) {
@@ -618,5 +636,6 @@ async function closeConnectionPool() {
 }
 
 initConnection();
+logIn("gerente1234", "contrasena123")
 
 export { logIn, userInfo, userOrdenActive, userAssociatedCard, userOrdenFinished, getLocalidades, getLocalidad, getSeguros, getAutos, getAuto, getExtras, getListaExtras, crearUser, getTipoTarjeta, crearTarjeta, deleteCard, finalizarOrden };
