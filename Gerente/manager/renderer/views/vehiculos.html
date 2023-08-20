@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vista - Vehiculos</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="../styles/estilos.css">
+    <link rel="stylesheet" href="./styles/estilos.css">
+    <link rel="stylesheet" href="./styles/vehiculos.css">
+</head>
+
+
+<body class="family-font">
+
+    <header id="encabezado-pc" class="family-font">
+        <p class="big-titulo">GearShift rent a car</p>
+    </header>
+
+    <main id="vista-especifica-editar">
+        <div class="contenedor-especifico family-font sub-titulo">
+            <a href="../index.html"><img src="./img/volver.png" alt="" style="width: 50px; height: 50px;"></a>
+            Volver al menu general de vistas 
+            <br>
+            <br>
+            <p class="titulo">Informacion de los vehiculos</p>
+        </div>
+
+        <section>
+            <div class="info-contenedor ">
+                <p class="titulo">Vehiculo:</p>
+
+                <div class="container">
+                    <div class="row align-items-start">
+                        <div class="col ">
+                            Identificador de vehiculo:
+                            <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled id="codigo">
+                        </div>
+                        <div class="col " id="img">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row align-items-start">
+                        <div class="col ">
+                            Marca:
+                            <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled id="marca">
+                        </div>
+
+                        <div class="col ">
+                            Modelo:
+                            <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled id="modelo">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row align-items-start">
+                        <div class="col ">
+                            Categoria:
+                            <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled id="categoria">
+                        </div>
+                        <div class="col ">
+                            Intervalo de mantenimiento (meses):
+                            <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled id="mantenimiento">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row align-items-start">
+                        <div class="col ">
+                            Kilometraje:
+                            <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled id="kilometraje">
+                        </div>
+                    </div>
+                    <br>
+
+                </div>
+
+                <!--C CREATE
+                R READ
+                U UPDATE
+                D DELETE-->
+            </div>
+        </section>
+    
+        <section>
+            <div class="info-contenedor ">
+                <div class="container">
+                    <div class="row align-items-start">
+                        <div class="col"> 
+                            <div class="tarjeta"  onclick="mostrarVistaEspecifica()">
+                                <div class="imagen-tarjeta">
+                                    <img src="img/clientes.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                                </div>  
+                                <div class="info-vista">
+                                    <div class="family-font" style="font-weight: bold; font-size: 20px;"> Clientes</div>
+                                    <br>
+                                    <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva ala información sobre los clientes.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="tarjeta"  onclick="mostrarVistaEspecifica()">
+                                <div class="imagen-tarjeta">
+                                    <img src="img/facturas.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                                </div>  
+                                <div class="info-vista">
+                                    <div class="family-font" style="font-weight: bold; font-size: 20px;"> Facturas</div>
+                                    <br>
+                                    <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a información sobre las facturas.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="tarjeta"  onclick="mostrarVistaEspecifica()">
+                                <div class="imagen-tarjeta">
+                                    <img src="img/lista-negra.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                                </div>  
+                                <div class="info-vista">
+                                    <div class="family-font" style="font-weight: bold; font-size: 20px;"> Lista Negra</div>
+                                    <br>
+                                    <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la información de los clientes que estan vetados de nuestros servicios.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="tarjeta"  onclick="mostrarVistaEspecifica()">
+                                <div class="imagen-tarjeta">
+                                    <img src="img/lista-negra.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                                </div>  
+                                <div class="info-vista">
+                                    <div class="family-font" style="font-weight: bold; font-size: 20px;"> Lista Negra</div>
+                                    <br>
+                                    <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la información de los clientes que estan vetados de nuestros servicios.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="tarjeta"  onclick="mostrarVistaEspecifica()">
+                                <div class="imagen-tarjeta">
+                                    <img src="img/lista-negra.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                                </div>  
+                                <div class="info-vista">
+                                    <div class="family-font" style="font-weight: bold; font-size: 20px;"> Lista Negra</div>
+                                    <br>
+                                    <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la información de los clientes que estan vetados de nuestros servicios.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="tarjeta"  onclick="mostrarVistaEspecifica()">
+                                <div class="imagen-tarjeta">
+                                    <img src="img/lista-negra.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                                </div>  
+                                <div class="info-vista">
+                                    <div class="family-font" style="font-weight: bold; font-size: 20px;"> Lista Negra</div>
+                                    <br>
+                                    <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la información de los clientes que estan vetados de nuestros servicios.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="../js/controller-vehiculos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+</body>
+
+</html>

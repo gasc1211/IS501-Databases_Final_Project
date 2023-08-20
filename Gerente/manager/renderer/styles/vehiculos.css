@@ -1,0 +1,28 @@
+.tarjeta{
+    display: flex;
+    width: 305px;
+    height: 150px;
+    background-color: #74b8f7;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.tarjeta:hover{
+    cursor: pointer;
+}
+
+.imagen-tarjeta{
+    border-radius: 10px 0 0 10px;
+    width: 150px;
+    height: 150px;
+    background-color: #5caffc;
+}
+.info-vista{
+    border-radius: 0 10px 10px 0;
+    height: 150px;
+    width: 255px;
+    background-color: #74b8f7;
+    padding-left: 10px;
+}
+.info-vista:hover{
+    background-color: #57aaf8;
+}

@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+
+.family-font{
+    font-family: 'Mulish', sans-serif;
+}
+
+#encabezado-pc{
+    width: 100%;
+    height: 160px;
+    background: #507FAB;
+    border-radius: 0px 0px 30px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem 1rem 1rem;
+}
+#cuerpo{
+    display: flex;
+    height: 100%;
+    margin-top: 40px;
+}
+
+.centrar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0 auto;
+}
+.contenidos{
+    flex-direction: column; 
+    align-items: flex-start;
+    padding-left: 1rem;
+}
+
+#inicio-ses{
+    height: 600px;
+    width: 414px;
+    border-radius: 60px;
+    background-color: white;
+}
+
+.into-session{
+    padding: 0 0 0 1.375rem  ;
+}
+
+.input{
+    width: 338px;
+    height: 60px;
+    background: #EAEAEA;
+    border: 0px;
+    border-radius: 10px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 25px;
+    padding: 0 1.5rem 0 1.5rem;
+    margin-top: 30px;
+}
+
+body{
+    background-color: #70d2ed;
+    margin: 0;
+}
+
+.big-titulo{
+    margin: 0 1rem 0 1rem;
+    font-weight: 900;
+    font-size: 55px;
+    line-height: 44px;    
+}
+.titulo{
+    margin: 0 1rem 0 1rem;
+    font-weight: 900;
+    font-size: 35px;
+    line-height: 44px;
+}
+.titulo-medio{
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 31px;
+}
+.sub-titulo{
+    margin: 0 1rem 0 1rem;
+    font-weight: 350;
+    font-size: 25px;
+    line-height: 31px;
+    color: #32506b;
+}
+
+.btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 335px;
+    height: 60px;
+    background: #fe824a;
+    border: 0px;
+    border-radius: 10px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 25px;
+    margin-top: 30px;
+}
+.btn:hover{
+    background: #f56421;
+}
+
+.burbuja{
+    height: 579px;
+    width: 100%;
+    background-color: #C22727;
+    border-radius: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}

@@ -1,0 +1,10 @@
+-> Directorio ProyectoBD_Grupo 
+    Contiene el backend, dentro del directorio "src" se encuentran los "conectores" que utilice para unir la bd a la app:
+    - dbConnectionManager: Se encarga de verificar la existencia del usuario, tambien verifica que pertenezca a cierto puesto de trabajo.
+    - dbConnectionManagerTarjets:Fichero extenso que se encarga de hacer las peticiones de cada tabla para que al dar click sobre las fichas de la pantalla principal
+                                muestren ciertos campos de informacion.
+    -dbConnectionManagerSeeMoore: (Recien note que esta mal escrito) otro fichero muy extenso, hace las peticiones para que al dar click sobre el boton "ver mas" 
+                                se muestre informacion mas especifica sobre un registro especifico
+    El directorio "routes", contiene ficheros que utilice como routers para "alivianar" codigo
+-> Directorio ProyectoBD:
+    Contiene el directorio "renderer" que a su vez contiene todo el frontend de la aplicacion.

@@ -1,0 +1,27 @@
+.principal {
+    margin: 20px;
+}
+
+.estilos {
+    background-color: #F1F1F1;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px #547857;
+}
+
+.estilos-check {
+    color: #333; /* Cambiar el color del texto */
+    font-size: 30px; /* Cambiar el tamaño de la fuente */
+    font-weight: bold;
+}
+
+.vertical-line {
+    width: 1px;
+    height: 90%;
+    background-color: rgb(70, 70, 70);
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
