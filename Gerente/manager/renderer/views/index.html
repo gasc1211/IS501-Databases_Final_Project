@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio-Gerentes</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/estilos.css">
+    <link rel="stylesheet" href="../styles/infoUser.css">
+
+</head>
+<body>
+
+    <header id="encabezado-pc" class="family-font">
+        <p class="big-titulo">GearShift rent a car</p>
+    </header>
+
+    <div class="cliente">
+        <div class="container">
+            <div class="row p-3 mt-5 mb-5 cliente-info-stles">
+                <div class="col-12">
+                    <h2>Empleado</h2>
+                </div>
+                <div class="col-4" id="nombreCliente">
+                    <!-- <p><b>Nombre:</b> Junior</p> -->
+                </div>
+                <div class="col-4" id="apellidoCliente">
+                    <!-- <p><b>Apellido:</b> Castillo</p> -->
+                </div>
+                <div class="col-4" id="emailCliente">
+                    <!-- <p><b>Email:</b> jicastilloh@unah.hn</p> -->
+                </div>
+                <div class="col-4" id="telCliente">
+                    <!-- <p><b>Teléfono:</b> XXXX-XXXX</p> -->
+                </div>
+                <div class="col-4" id="dniCliente">
+                    <!-- <p><b>No. Identidad:</b> XXXX-XXXX-XXXXX</p> -->
+                </div>
+                <div class="col-4" id="licenciaCliente">
+                    <!-- <p><b>Licencia </b>de Conducir: XXXXX</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main id="Vistas">
+
+        <div class="titulo family-font">
+            Seleccione la vista que deseas ver
+        </div>
+        <br>
+        <br>
+        <div class="container contenedor-tarjetas">
+            <div class="row align-items-start">
+                <div class="col"> 
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="caracteristicas">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/caracteristicas.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Características De los vehiculo</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista de las posibles caracteristicas que puede tener un vehiculo.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="categorias">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/categorias.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> categorias de los vehiculos.</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista las posibles categorias en las que entra un vehiculo.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="clientes">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/clientes.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Clientes</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista de los clientes que estan registrados.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="danios">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/danios.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Daños</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista de los posibles daños que puede sufrir un vehiculo.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="empleados">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/empleados.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Empleados</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista de los empleados que tiene la empresa.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="estatus">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/estatus.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Estatus de las ordenes</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista de los estados que puede tener la orden.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="extras">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/extras.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Aditamentos extras para vehiculos</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista aditamentos que se pueden agregar a los vehiculos.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="facturas">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/facturas.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Facturas</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista de las facturas registradas.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="lista-negra">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/lista-negra.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Lista negra de clientes</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista de los clientes que se encuentran en lista negra.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="localidades">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/localidades.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Localidades</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista nuestros locales registrados.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="marcas">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/marcas.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Marcas de vehiculos</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista de las marcas de los vehiculos.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="modelos">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/modelos.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Modelo de vehiculos</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la de los modelos de vehiculos disponibles.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="multas">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/multas.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Multas por incumplimiento</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista de las multas que podrían aplicarse a una orden.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="ordenes">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/ordenes.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Ordenes</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista de las ordenes registradas por los usuarios.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="puestos">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/puestos_empleados.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Puestos de empleados</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista los posibles puestos que puede tener signado un empleado.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="reporte-final">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/reporte-final.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Reportes finales</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista los reportes finales generados por cada orden.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="reporte-inicial">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/reporte-inicial.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Reportes iniciales</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista los reportes iniciales generados por cada orden.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="seguros">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/seguros.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Seguros para vehiculoss</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista los seguros a los que pueden optar los clientes.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="tarjetas">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/tarjetas-credito.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Tarjetas de crédito</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista las tarjetas que han registrado los clientes.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="tarjeta"  onclick="mostrarVistaEspecifica()" id="vehiculos">
+                        <div class="imagen-tarjeta">
+                            <img src="../img/vehiculos.png" alt="" style=" width: 150px; height: 150px; border-radius: 10px 0 0 10px;">
+                        </div>  
+                        <div class="info-vista">
+                            <div class="family-font" style="font-weight: bold; font-size: 20px;"> Vehiculos</div>
+                            <br>
+                            <div class="family-font" style="font-size: 15px;"> <b>Descripcion: </b>  Lleva a la vista d los vehiculos que tenemos disponibles.</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+    
+    <main id="vista-especifica">
+        <div class="contenedor-especifico family-font sub-titulo">
+            <img src="./../img/volver.png" alt="" style="width: 50px; height: 50px;" onclick="mostrarVistas()">
+            Volver al menu de vistas
+            <br>
+            <br>
+            <p class="titulo" id="titulo-tabla"> Visualización de ordenes disponibles</p>
+        </div>
+
+        <section class="contenedor-tabla">
+
+            <div class="container p-3 mt-5 mb-5 usuarios-styles">
+                <div class="row">
+                    <div class="col-12 justify-content-center" id="contenedor-tablas">
+                        <table id="tabla-de-tablas" class="table-styles">
+                            <tbody id="empleados">
+                            
+                            </tbody>
+                        </table>
+                        <!--<p class="family-font titulo">Ordenes activas</p>-->
+                        <table class="table-styles">
+                            <tbody >
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    
+
+
+
+
+    <script src="../js/controlador.js"></script>
+    <script src="../js/controller-index-tarjetas.js"></script>
+    <script src="../js/controller-index.js"></script>
+    <script src="../js/controller-index-verMas.js"></script>
+    <script src="../js/controller-change-state.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+</body>
+</html>
